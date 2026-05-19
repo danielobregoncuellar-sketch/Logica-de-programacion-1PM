@@ -2,12 +2,6 @@
 Grafica 1 - Scatter: Temperatura vs Humedad Relativa
 Dataset: Estaciones Hidrometeorologicas CAM
 Fuente: https://www.datos.gov.co/resource/2jrp-f4m5.csv
-
-Instalacion:
-    pip install bokeh pandas requests
-
-Ejecucion:
-    python grafica1_temperatura_vs_humedad.py
 """
 
 import pandas as pd
