@@ -2,12 +2,6 @@
 Grafica 2 - Barras: Precipitacion promedio por Departamento
 Dataset: Estaciones Hidrometeorologicas CAM
 Fuente: https://www.datos.gov.co/resource/2jrp-f4m5.csv
-
-Instalacion:
-    pip install bokeh pandas requests
-
-Ejecucion:
-    python grafica2_precipitacion_por_departamento.py
 """
 
 import pandas as pd
