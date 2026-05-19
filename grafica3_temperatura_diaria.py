@@ -137,6 +137,7 @@ p.title.text_font_size = "14pt"
 p.xaxis.axis_label_text_font_size = "11pt"
 p.yaxis.axis_label_text_font_size = "11pt"
 
-output_file("grafica3_serie_temperatura_diaria.html", title="Serie de Tiempo - Temperatura Diaria")
+output_file("grafica3_serie_temperatura_diaria.html",
+            title="Serie de Tiempo - Temperatura Diaria")
 show(p)
 print("Archivo generado: grafica3_serie_temperatura_diaria.html")
