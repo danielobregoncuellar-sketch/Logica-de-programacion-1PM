@@ -96,3 +96,8 @@ p.add_tools(HoverTool(tooltips=tooltips))
 p.title.text_font_size  = "14pt"
 p.xaxis.axis_label_text_font_size = "11pt"
 p.yaxis.axis_label_text_font_size = "11pt"
+
+output_file("grafica1_temperatura_vs_humedad.html",
+            title="Temperatura vs Humedad Relativa")
+show(p)
+print("Archivo generado: grafica1_temperatura_vs_humedad.html")
