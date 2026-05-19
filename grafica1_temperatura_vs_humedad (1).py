@@ -37,8 +37,7 @@ except Exception as e:
         "estacion":              np.random.choice(["Est. Norte", "Est. Sur", "Est. Centro", "Est. Oriente", "Est. Occidente"], n),
         "temperatura_(c)":      np.random.normal(18, 5, n),
         "humedad_relativa_(%)": np.random.uniform(40, 98, n),
-        "precipitacion_(mm)":   np.abs(np.random.exponential(5, n)),
-    })
+        "precipitacion_(mm)":   np.abs(np.random.exponential(5, n)),})
 
 # --------------------------------------------------------------
 # LIMPIEZA
@@ -67,17 +66,14 @@ mapper = linear_cmap(
     field_name=col_precip,
     palette=Turbo256,
     low=float(df[col_precip].min()),
-    high=float(df[col_precip].quantile(0.95)),
-)
+    high=float(df[col_precip].quantile(0.95)),)
 
 p = figure(
     title="Temperatura vs Humedad Relativa | Color = Precipitacion",
     x_axis_label="Temperatura (C)",
     y_axis_label="Humedad Relativa (%)",
     width=900,
-    height=480,
-    tools="pan,wheel_zoom,box_zoom,reset,save",
-)
+    height=480,    tools="pan,wheel_zoom,box_zoom,reset,save",)
 
 p.scatter(
     x=col_temp,
@@ -86,15 +82,13 @@ p.scatter(
     size=8,
     color=mapper,
     alpha=0.75,
-    line_color=None,
-)
+    line_color=None,)
 
 color_bar = ColorBar(
     color_mapper=mapper["transform"],
     width=14,
     label_standoff=10,
-    title="Precip. (mm)",
-)
+    title="Precip. (mm)",)
 p.add_layout(color_bar, "right")
 
 tooltips = [("Temperatura", f"@{{{col_temp}}}{{0.1f}} C"),
@@ -108,11 +102,3 @@ p.add_tools(HoverTool(tooltips=tooltips))
 p.title.text_font_size  = "14pt"
 p.xaxis.axis_label_text_font_size = "11pt"
 p.yaxis.axis_label_text_font_size = "11pt"
-
-# --------------------------------------------------------------
-# EXPORTAR
-# --------------------------------------------------------------
-
-output_file("grafica1_temperatura_vs_humedad.html", title="Temperatura vs Humedad Relativa")
-show(p)
-print("Archivo generado: grafica1_temperatura_vs_humedad.html")
