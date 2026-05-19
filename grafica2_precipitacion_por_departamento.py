@@ -100,3 +100,7 @@ p.xgrid.grid_line_color = None
 p.title.text_font_size  = "14pt"
 p.xaxis.axis_label_text_font_size = "11pt"
 p.yaxis.axis_label_text_font_size = "11pt"
+
+output_file("grafica2_precipitacion_por_departamento.html", title="Precipitacion por Departamento")
+show(p)
+print("Archivo generado: grafica2_precipitacion_por_departamento.html")
