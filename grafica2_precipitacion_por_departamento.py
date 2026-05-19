@@ -37,8 +37,7 @@ except Exception as e:
               "Narino", "Cauca", "Huila", "Tolima", "Meta", "Caldas"]
     df = pd.DataFrame({
         "departamento":       np.random.choice(deptos, n),
-        "precipitacion_(mm)": np.abs(np.random.exponential(8, n)),
-    })
+        "precipitacion_(mm)": np.abs(np.random.exponential(8, n)),})
 
 # --------------------------------------------------------------
 # LIMPIEZA
@@ -63,8 +62,7 @@ resumen = (
     .reset_index()
     .rename(columns={col_depto: "departamento"})
     .sort_values("precip_mean", ascending=False)
-    .head(10)
-)
+    .head(10))
 
 deptos_ord = resumen["departamento"].tolist()
 
@@ -84,8 +82,7 @@ p = figure(
     y_axis_label="Precipitacion promedio (mm)",
     width=900,
     height=480,
-    tools="pan,wheel_zoom,reset,save",
-)
+    tools="pan,wheel_zoom,reset,save",)
 
 p.vbar(
     x="departamento",
@@ -95,15 +92,13 @@ p.vbar(
     color=factor_cmap("departamento", palette=palette, factors=deptos_ord),
     alpha=0.88,
     line_color="white",
-    line_width=0.8,
-)
+    line_width=0.8,)
 
 p.add_tools(HoverTool(tooltips=[
     ("Departamento",     "@departamento"),
     ("Precip. promedio", "@precip_mean{0.2f} mm"),
     ("Precip. maxima",   "@precip_max{0.2f} mm"),
-    ("Registros",        "@n_registros"),
-]))
+    ("Registros",        "@n_registros"),]))
 
 p.y_range.start = 0
 p.xaxis.major_label_orientation = 0.55
@@ -111,11 +106,3 @@ p.xgrid.grid_line_color = None
 p.title.text_font_size  = "14pt"
 p.xaxis.axis_label_text_font_size = "11pt"
 p.yaxis.axis_label_text_font_size = "11pt"
-
-# --------------------------------------------------------------
-# EXPORTAR
-# --------------------------------------------------------------
-
-output_file("grafica2_precipitacion_por_departamento.html", title="Precipitacion por Departamento")
-show(p)
-print("Archivo generado: grafica2_precipitacion_por_departamento.html")
