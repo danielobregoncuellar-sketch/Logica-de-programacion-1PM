@@ -35,8 +35,7 @@ except Exception as e:
     df = pd.DataFrame({
         "fecha_hora":             fechas,
         "temperatura_(c)":        np.random.normal(18, 4, n) + 3 * np.sin(np.linspace(0, 6 * np.pi, n)),
-        "radiacion_solar_(w/m2)": np.abs(np.random.normal(280, 120, n)),
-    })
+        "radiacion_solar_(w/m2)": np.abs(np.random.normal(280, 120, n)),})
 
 # --------------------------------------------------------------
 # LIMPIEZA
@@ -63,8 +62,7 @@ print(f"Registros validos: {len(df)}")
 df["fecha"] = df[col_fecha].dt.normalize()
 
 agg_dict = {
-    col_temp: ["mean", "max", "min"]
-}
+    col_temp: ["mean", "max", "min"]}
 if col_rad:
     agg_dict[col_rad] = ["mean"]
 
@@ -88,8 +86,7 @@ p = figure(
     y_axis_label="Temperatura (C)",
     width=900,
     height=480,
-    tools="pan,wheel_zoom,box_zoom,reset,save",
-)
+    tools="pan,wheel_zoom,box_zoom,reset,save",)
 
 rad_max = float(daily["rad_mean"].max()) * 1.15 if daily["rad_mean"].notna().any() else 800
 p.extra_y_ranges = {"rad": Range1d(start=0, end=rad_max)}
@@ -98,10 +95,8 @@ p.add_layout(
         y_range_name="rad",
         axis_label="Radiacion solar (W/m2)",
         axis_label_text_color="#E65100",
-        major_label_text_color="#E65100",
-    ),
-    "right",
-)
+        major_label_text_color="#E65100",),
+    "right",)
 
 p.varea(
     x="fecha",
@@ -110,16 +105,14 @@ p.varea(
     source=source,
     fill_alpha=0.18,
     fill_color="#1565C0",
-    legend_label="Rango Temp. (min-max)",
-)
+    legend_label="Rango Temp. (min-max)",)
 
 p.line(
     "fecha", "temp_mean",
     source=source,
     line_width=2.8,
     color="#1565C0",
-    legend_label="Temp. media",
-)
+    legend_label="Temp. media",)
 
 if col_rad:
     p.line(
@@ -130,8 +123,7 @@ if col_rad:
         alpha=0.75,
         line_dash="dashed",
         y_range_name="rad",
-        legend_label="Rad. solar media",
-    )
+        legend_label="Rad. solar media",)
 
 p.add_tools(HoverTool(
     tooltips=[
@@ -142,8 +134,7 @@ p.add_tools(HoverTool(
         ("Rad. solar", "@rad_mean{0.0f} W/m2"),
     ],
     formatters={"@fecha": "datetime"},
-    mode="vline",
-))
+    mode="vline",))
 
 p.legend.location      = "top_left"
 p.legend.click_policy  = "hide"
@@ -152,10 +143,3 @@ p.title.text_font_size = "14pt"
 p.xaxis.axis_label_text_font_size = "11pt"
 p.yaxis.axis_label_text_font_size = "11pt"
 
-# --------------------------------------------------------------
-# EXPORTAR
-# --------------------------------------------------------------
-
-output_file("grafica3_serie_temperatura_diaria.html", title="Serie de Tiempo - Temperatura Diaria")
-show(p)
-print("Archivo generado: grafica3_serie_temperatura_diaria.html")
