@@ -2,12 +2,6 @@
 Grafica 3 - Serie de Tiempo: Temperatura Media Diaria y Radiacion Solar
 Dataset: Estaciones Hidrometeorologicas CAM
 Fuente: https://www.datos.gov.co/resource/2jrp-f4m5.csv
-
-Instalacion:
-    pip install bokeh pandas requests
-
-Ejecucion:
-    python grafica3_serie_temperatura_diaria.py
 """
 
 import pandas as pd
